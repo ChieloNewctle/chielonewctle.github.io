@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Chess Puzzle - ICPC 长春区域赛 2015 - Chielo&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="&amp;#x9898;&amp;#x610F;&amp;#x7ED9;&amp;#x4E00;&amp;#x4E2A; $n \times m$ &amp;#x7684;&amp;#x68CB;&amp;#x76D8;&amp;#xFF0C;&amp;#x6BCF;&amp;#x4E2A;&amp;#x4F4D;&amp;#x7F6E;&amp;#x6709;&amp;#x7A7A;&amp;#x3001;&amp;#x9ED1;&amp;#x3001;&amp;#x767D;&amp;#x4E09;&amp;#x79CD;&amp;#x60C5;&amp;#x51B5;&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chess Puzzle - ICPC 长春区域赛 2015">
+<meta property="og:url" content="https://chielonewctle.github.io/2019/09/08/changchun-regional-2015-chess-puzzle/index.html">
+<meta property="og:site_name" content="Chielo&#39;s Blog">
+<meta property="og:description" content="&amp;#x9898;&amp;#x610F;&amp;#x7ED9;&amp;#x4E00;&amp;#x4E2A; $n \times m$ &amp;#x7684;&amp;#x68CB;&amp;#x76D8;&amp;#xFF0C;&amp;#x6BCF;&amp;#x4E2A;&amp;#x4F4D;&amp;#x7F6E;&amp;#x6709;&amp;#x7A7A;&amp;#x3001;&amp;#x9ED1;&amp;#x3001;&amp;#x767D;&amp;#x4E09;&amp;#x79CD;&amp;#x60C5;&amp;#x51B5;&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-13T00:36:50.680Z">
+<meta property="article:author" content="Chielo Newctle">
+<meta property="article:tag" content="ICPC">
+<meta property="article:tag" content="区域赛">
+<meta property="article:tag" content="网络流">
+<meta property="article:tag" content="最大流">
+<meta property="article:tag" content="最小割">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Source+Code+Pro|Noto+Serif+SC|Noto+Sans+SC|Roboto+Condensed">
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link rel="stylesheet" href="/css/leaves.css">
+
+
+<script defer src="//cdn.bootcss.com/font-awesome/5.8.1/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<script src="//cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Chielo's Blog" type="application/atom+xml">
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/assets/about/avatar.jpg" alt="" height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/">主页</a>
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/categories">分类</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签</a>
+            
+            <a class="navbar-item "
+               href="/cheat-sheet">技巧</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="目录">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">1&nbsp;&nbsp;<b>题意#</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#">2&nbsp;&nbsp;<b>题解#</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">2.1&nbsp;&nbsp;方案#</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#">3&nbsp;&nbsp;<b>代码#</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Chess Puzzle - ICPC 长春区域赛 2015
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-08T16:00:00.000Z" itemprop="datePublished">9月 8 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a>
+        </span>
+        
+        
+        
+            
+            <span class="column is-narrow article-portal-link">
+                <i class="fas fa-link"></i>
+                <a href="https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&category=681&page=show_problem&problem=5203" target="_blank" rel="noopener">UVALive 7191</a>
+            </span>
+            
+            <span class="column is-narrow article-portal-link">
+                <i class="fas fa-link"></i>
+                <a href="http://acm.hdu.edu.cn/showproblem.php?pid=5535" target="_blank" rel="noopener">HDU 5535</a>
+            </span>
+            
+            <span class="column is-narrow article-portal-link">
+                <i class="fas fa-link"></i>
+                <a href="https://vjudge.net/problem/HDU-5535" target="_blank" rel="noopener">UVALive 7191 - VJudge</a>
+            </span>
+            
+            <span class="column is-narrow article-portal-link">
+                <i class="fas fa-link"></i>
+                <a href="https://vjudge.net/problem/HDU-5535" target="_blank" rel="noopener">HDU 5535 - VJudge</a>
+            </span>
+            
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h2><span id="ti-yi">&#x9898;&#x610F;</span><a href="#ti-yi" class="header-anchor">#</a></h2><p>&#x7ED9;&#x4E00;&#x4E2A; $n \times m$ &#x7684;&#x68CB;&#x76D8;&#xFF0C;&#x6BCF;&#x4E2A;&#x4F4D;&#x7F6E;&#x6709;&#x7A7A;&#x3001;&#x9ED1;&#x3001;&#x767D;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#x3002;<!--
+-->&#x73B0;&#x5728;&#x9700;&#x8981;&#x586B;&#x5145;&#x7A7A;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4F7F;&#x5F97;&#x989C;&#x8272;&#x4E0D;&#x540C;&#x7684;&#x3001;&#x884C;&#x5750;&#x6807;&#x5DEE;&#x4E3A; $a$&#x3001;&#x5217;&#x5750;&#x6807;&#x5DEE;&#x4E3A; $b$ &#x7684;&#x68CB;&#x5B50;&#x5BF9;&#x6570;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x3002;<!--
+-->&#x4F46;&#x8981;&#x7ED9;&#x51FA;&#x5B57;&#x5178;&#x5E8F;&#x6700;&#x5C0F;&#x7684;&#x89E3;&#x3002;</p>
+<a id="more"></a>
+
+
+<h2><span id="ti-jie">&#x9898;&#x89E3;</span><a href="#ti-jie" class="header-anchor">#</a></h2><p>&#x5982;&#x679C;&#x662F;&#x6570;&#x989C;&#x8272;&#x76F8;&#x540C;&#xFF0C;&#x4E5F;&#x4E0D;&#x7ED9;&#x65B9;&#x6848;&#xFF0C;&#x5C31;&#x7B80;&#x5355;&#x7684;&#x591A;&#x3002;<!--
+-->&#x6BCF;&#x4E2A;&#x4F4D;&#x7F6E;&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x7F51;&#x7EDC;&#x6D41;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x70B9;&#x3002;<!--
+-->&#x5982;&#x679C;&#x548C; S &#x5212;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x653E;&#x9ED1;&#x68CB;&#x5B50;&#xFF0C;&#x548C;&#x6C47;&#x70B9;&#x5212;&#x4E00;&#x8D77;&#x5219;&#x653E;&#x767D;&#x68CB;&#x5B50;&#x3002;<!--
+-->&#x5750;&#x6807;&#x8DDD;&#x79BB;&#x6EE1;&#x8DB3;&#x9650;&#x5236;&#x7684;&#x4E24;&#x4E2A;&#x70B9;&#x4E92;&#x76F8;&#x8FDE;&#x4E00;&#x4E2A;&#x5BB9;&#x91CF;&#x4E3A; 1 &#x7684;&#x8FB9;&#xFF0C;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x4F4D;&#x7F6E;&#x989C;&#x8272;&#x4E0D;&#x540C;&#x5219;&#x4F1A;&#x5272;&#x5230;&#x8FD9;&#x6761;&#x8FB9;&#x3002;</p>
+<p>&#x4F46;&#x73B0;&#x5728;&#x662F;&#x989C;&#x8272;&#x4E0D;&#x540C;&#xFF0C;&#x9700;&#x8981;&#x6362;&#x4E00;&#x4E0B;&#x610F;&#x4E49;&#x3002;</p>
+<p>&#x5BB9;&#x6613;&#x53D1;&#x73B0;&#x6EE1;&#x8DB3;&#x5750;&#x6807;&#x8DDD;&#x79BB;&#x9650;&#x5236;&#x7684;&#x70B9;&#x53EF;&#x4EE5;&#x9ED1;&#x767D;&#x67D3;&#x8272;&#xFF08;&#x4E0B;&#x6587;&#x6539;&#x79F0;&#x7EA2;&#x84DD;&#xFF09;&#xFF0C;<!--
+-->&#x6BCF; $a$ &#x884C;&#x4E00;&#x7EC4;&#xFF0C;&#x7EA2;&#x84DD;&#x4EA4;&#x66FF;&#x67D3;&#x8272;&#xFF08;&#x524D; $a$ &#x884C;&#x67D3;&#x7EA2;&#xFF0C;&#x63A5;&#x4E0B;&#x6765; $a$ &#x884C;&#x67D3;&#x84DD;&#x2026;&#x2026;&#xFF09;&#x3002;</p>
+<p>&#x7EA2;&#x70B9;&#x82E5;&#x548C; S &#x5212;&#x4E00;&#x8D77;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x653E;&#x9ED1;&#x7684;&#xFF1B;&#x84DD;&#x70B9;&#x82E5;&#x548C; S &#x5212;&#x4E00;&#x8D77;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x653E;&#x767D;&#x7684;&#xFF1B;&#x53CD;&#x8FC7;&#x6765;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x7EA2; T &#x67D3;&#x767D;&#xFF0C;&#x84DD; T &#x67D3;&#x9ED1;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x8FDE;&#x8FB9;&#x548C;&#x4E0A;&#x9762;&#x989C;&#x8272;&#x76F8;&#x540C;&#x65F6;&#x5019;&#x7684;&#x60C5;&#x51B5;&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8DDD;&#x79BB;&#x6EE1;&#x8DB3;&#x9650;&#x5236;&#x7684;&#x4E92;&#x76F8;&#x8FDE;&#x5BB9;&#x91CF;&#x4E3A; 1 &#x7684;&#x8FB9;&#xFF0C;&#x8FD9;&#x6837;&#x8FDE;&#x63A5;&#x7684;&#x80AF;&#x5B9A;&#x5206;&#x522B;&#x662F;&#x7EA2;&#x84DD;&#x4E24;&#x70B9;&#x3002;</p>
+<p>&#x5F3A;&#x5236;&#x8BA9;&#x67D0;&#x4E2A;&#x70B9;&#x4E3A;&#x9ED1;&#x6216;&#x767D;&#x68CB;&#x5B50;&#xFF0C;&#x5219;&#x6309;&#x4E0A;&#x9762;&#x7684;&#x7EA2;&#x84DD;&#x70B9;&#x548C;&#x6E90;&#x6C47;&#x7684;&#x5173;&#x7CFB;&#x8FDE;&#x4E00;&#x4E2A;&#x65E0;&#x7A77;&#x5927;&#x7684;&#x8FB9;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x7B54;&#x6848;&#x5373;&#x4E3A;&#x8DDD;&#x79BB;&#x6EE1;&#x8DB3;&#x9650;&#x5236;&#x7684;&#x70B9;&#x5BF9;&#x6570;&#x91CF;&#xFF0C;&#x51CF; S-T &#x6700;&#x5C0F;&#x5272;&#x7684;&#x503C;&#x3002;</p>
+<h3><span id="fang-an">&#x65B9;&#x6848;</span><a href="#fang-an" class="header-anchor">#</a></h3><p>&#x65B9;&#x6848;&#x662F;&#x4E2A;&#x9EBB;&#x70E6;&#x4E1C;&#x897F;&#xFF0C;&#x8FD8;&#x8981;&#x5B57;&#x5178;&#x5E8F;&#x6700;&#x5C0F;&#x3002;</p>
+<p>&#x4ECE;&#x4E0A;&#x5230;&#x4E0B;&#x3001;&#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#xFF0C;&#x8D2A;&#x5FC3;&#x770B;&#x8FD9;&#x4E2A;&#x70B9;&#x80FD;&#x4E0D;&#x80FD;&#x67D3;&#x9ED1;&#x7684;&#x3002;</p>
+<p>&#x5728;&#x6B8B;&#x4F59;&#x7F51;&#x7EDC;&#x4E0A;&#xFF0C;&#x4ECE;&#x6E90;&#x70B9;&#x51FA;&#x53D1;&#x67D3;&#x8272;&#x3001;&#x4ECE;&#x6C47;&#x70B9;&#x51FA;&#x53D1;&#x53CD;&#x5411;&#x67D3;&#x8272;&#xFF0C;<!--
+-->&#x82E5;&#x8FD9;&#x4E2A;&#x70B9;&#x5728;&#x6B8B;&#x4F59;&#x7F51;&#x7EDC;&#x4E0A;&#x548C;&#x6E90;&#x70B9;&#x76F8;&#x8FDE;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x5FC5;&#x7136;&#x628A;&#x5B83;&#x548C; S &#x5272;&#x5728;&#x4E86;&#x4E00;&#x8D77;&#xFF1B;&#x53CD;&#x4E4B;&#x548C; T &#x5272;&#x5728;&#x4E00;&#x8D77;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x6CA1;&#x6709;&#x67D3;&#x5230;&#x7684;&#x70B9;&#xFF0C;&#x90A3;&#x8FD9;&#x4E2A;&#x70B9;&#x53EF;&#x4EE5;&#x662F;&#x9ED1;&#x7684;&#x3002;<!--
+-->&#x6B64;&#x65F6;&#x5DF2;&#x77E5;&#x8BE5;&#x70B9;&#x4E3A;&#x9ED1;&#x8272;&#x7684;&#xFF0C;&#x6F5C;&#x5728;&#x5730;&#x9700;&#x8981;&#x518D;&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x6240;&#x8BF4;&#x7684;&#x548C;&#x6E90;&#x6216;&#x6C47;&#x8FDE;&#x8FB9;&#xFF0C;&#x8DD1;&#x7F51;&#x7EDC;&#x6D41;&#xFF0C;&#x5E76;&#x518D;&#x8FDB;&#x884C;&#x67D3;&#x8272;&#x3002;<!--
+-->&#x4F46;&#x8FD9;&#x4E0D;&#x5FC5;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x7B54;&#x6848;&#x5DF2;&#x7ECF;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5047;&#x88C5;&#x8FD9;&#x4E2A;&#x70B9;&#x548C;&#x6E90;&#x6216;&#x6C47;&#x6709;&#x8FB9;&#xFF0C;&#x5728;&#x4E4B;&#x524D;&#x67D3;&#x8272;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x518D;&#x67D3;&#x8272;&#x3002;</p>
+<p>&#x7C7B;&#x4F3C;&#x4E8E;&#x5DF2;&#x77E5;&#x67D0;&#x4E2A;&#x70B9;&#x662F;&#x9ED1;&#x68CB;&#x5B50;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x5DF2;&#x77E5;&#x60C5;&#x51B5;&#x53BB;&#x9012;&#x5F52;&#x653E;&#x7A7A;&#x4F4D;&#x7F6E;&#x7684;&#x9ED1;&#x767D;&#x68CB;&#x5B50;&#xFF0C;&#x4EE5;&#x907F;&#x514D;&#x540E;&#x7EED;&#x9519;&#x653E;&#x6210;&#x9ED1;&#x7684;&#x3002;</p>
+<h2><span id="dai-ma">&#x4EE3;&#x7801;</span><a href="#dai-ma" class="header-anchor">#</a></h2><p><a href="/assets/src/uvalive/7191/i.cpp">UVALive 7191 - ISAP</a></p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/ICPC/">#ICPC</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/%E5%8C%BA%E5%9F%9F%E8%B5%9B/">#区域赛</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/">#网络流</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/">#最大流</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2/">#最小割</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2020/04/11/The-16th-Zhejiang-Provincial-Collegiate-Programming-Contest/">The 16th Zhejiang Provincial Collegiate Programming Contest</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/04/29/Codeforces-Round-556-Div-1/">Codeforces Round #556 (Div. 1)</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">评论</h3>
+    <!-- https://github.com/gitalk/gitalk/ -->
+
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+	const gitalk = new Gitalk({
+		clientID: 'f14a9588509f70e5daf3',
+		clientSecret: 'b91f31763cfd5e1da04f45f23717b7564638c1fd',
+		owner: 'ChieloNewctle',
+		repo: 'chielonewctle.github.io',
+		admin: [
+		
+			'ChieloNewctle',
+		
+		],
+		id: '2019/09/08/changchun-regional-2015-chess-puzzle/',
+		distractionFreeMode: false // Facebook-like distraction free mode
+	})
+
+	gitalk.render('gitalk-container')
+</script>
+
+
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Chielo Newctle&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="RSS" href="/atom.xml">
+                    
+                    RSS
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="Email" href="mailto:chielonewctle@yandex.com">
+                    
+                    Email
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="Theme" href="https://github.com/ChieloNewctle/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    Theme
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.loli.net/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

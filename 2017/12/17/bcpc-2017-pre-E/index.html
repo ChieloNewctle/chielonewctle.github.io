@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>BCPC2017 预赛 E. 气球派对 - Chielo&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="&amp;#x51FA;&amp;#x9898;: Chielo, &amp;#x9A8C;&amp;#x9898;: chitanda&amp;#x3002; &amp;#x7B80;&amp;#x660E;&amp;#x9898;&amp;#x89E3;&amp;#xFF1A;&amp;#x5947;&amp;#x5076;&amp;#x67D3;&amp;#x8272; + &amp;#x4E8C;&amp;#x5206;&amp;#x56FE;&amp;#x6700;&amp;#x5C0F;&amp;#x70B9;&amp;#x8986;&amp;#x76D6;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BCPC2017 预赛 E. 气球派对">
+<meta property="og:url" content="https://chielonewctle.github.io/2017/12/17/bcpc-2017-pre-E/index.html">
+<meta property="og:site_name" content="Chielo&#39;s Blog">
+<meta property="og:description" content="&amp;#x51FA;&amp;#x9898;: Chielo, &amp;#x9A8C;&amp;#x9898;: chitanda&amp;#x3002; &amp;#x7B80;&amp;#x660E;&amp;#x9898;&amp;#x89E3;&amp;#xFF1A;&amp;#x5947;&amp;#x5076;&amp;#x67D3;&amp;#x8272; + &amp;#x4E8C;&amp;#x5206;&amp;#x56FE;&amp;#x6700;&amp;#x5C0F;&amp;#x70B9;&amp;#x8986;&amp;#x76D6;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-12-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-13T00:36:50.680Z">
+<meta property="article:author" content="Chielo Newctle">
+<meta property="article:tag" content="BCPC">
+<meta property="article:tag" content="二分图">
+<meta property="article:tag" content="Kőnig 定理">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Source+Code+Pro|Noto+Serif+SC|Noto+Sans+SC|Roboto+Condensed">
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link rel="stylesheet" href="/css/leaves.css">
+
+
+<script defer src="//cdn.bootcss.com/font-awesome/5.8.1/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<script src="//cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Chielo's Blog" type="application/atom+xml">
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/assets/about/avatar.jpg" alt="" height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/">主页</a>
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/categories">分类</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签</a>
+            
+            <a class="navbar-item "
+               href="/cheat-sheet">技巧</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜索" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="目录">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">1&nbsp;&nbsp;<b>题解#</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#">2&nbsp;&nbsp;<b>构造与证明#</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">2.1&nbsp;&nbsp;构造#</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">2.2&nbsp;&nbsp;证明#</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">2.2.1&nbsp;&nbsp;\(|\text{最小点覆盖}| \ge |\text{完美匹配}|\)#</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">2.2.2&nbsp;&nbsp;\(|S_0| = |\text{完美匹配}|\)#</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">2.2.3&nbsp;&nbsp;\(S_0\) 是一个点覆盖#</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#">2.2.4&nbsp;&nbsp;证明总结#</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#">3&nbsp;&nbsp;<b>比赛结果分析#</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#">4&nbsp;&nbsp;<b>标程#</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            BCPC2017 预赛 E. 气球派对
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2017-12-17T16:00:00.000Z" itemprop="datePublished">12月 17 2017</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a>
+        </span>
+        
+        
+        <span class="column is-narrow article-portal-link">
+            <i class="fas fa-link"></i>
+            <a href="https://accoding.cn/problem/954/index" target="_blank" rel="noopener">传送门</a>
+        </span>
+        
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>&#x51FA;&#x9898;: Chielo, &#x9A8C;&#x9898;: chitanda&#x3002;</p>
+<p>&#x7B80;&#x660E;&#x9898;&#x89E3;&#xFF1A;&#x5947;&#x5076;&#x67D3;&#x8272; + &#x4E8C;&#x5206;&#x56FE;&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6; + K&#x151;nig &#x5B9A;&#x7406;&#x3002;</p>
+<a id="more"></a>
+
+<h2><span id="ti-jie">&#x9898;&#x89E3;</span><a href="#ti-jie" class="header-anchor">#</a></h2><p>&#x5BB9;&#x6613;&#x53D1;&#x73B0;&#xFF0C;&#x4ECE;&#x5706;&#x4E0A;&#x6216;&#x5706;&#x5185;&#x4EFB;&#x610F;&#x4E00;&#x6574;&#x70B9;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#x5947;&#x5076;&#x67D3;&#x8272;&#xFF0C;&#x5C31;&#x5C06;&#x539F;&#x56FE;&#x8F6C;&#x5316;&#x4E3A;&#x4E8C;&#x5206;&#x56FE;&#x4E86;&#xFF08;&#x5BB9;&#x6613;&#x4ECE;&#x6BCF;&#x4E2A;&#x70B9;&#x5230;&#x51FA;&#x53D1;&#x70B9;&#x7684;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#x7684;&#x5947;&#x5076;&#x6027;&#x8BC1;&#x660E;&#x8FD9;&#x4E00;&#x70B9;&#xFF09;&#x3002;</p>
+<p>&#x8BB0;&#x8F6C;&#x5316;&#x540E;&#x7684;&#x4E8C;&#x5206;&#x56FE;&#x4E3A; \(B(V = L \cup R, E)\)&#xFF0C;&#x90A3;&#x4E48;&#x95EE;&#x9898;&#x5C31;&#x53D8;&#x4E3A;&#xFF1A;</p>
+<blockquote>
+<p>&#x9009;&#x53D6;&#x82E5;&#x5E72;&#x4E2A;&#x70B9;&#x6784;&#x6210;&#x70B9;&#x96C6; \(S \subseteq V\)&#xFF0C;&#x4F7F;&#x5F97;&#x6BCF;&#x6761;&#x8FB9; \(e \in E\) &#x90FD;&#x4E0E; \(S\) &#x4E2D;&#x81F3;&#x5C11;&#x4E00;&#x4E2A;&#x70B9;&#x76F8;&#x90BB;&#x3002;&#x5B9E;&#x9645;&#x5C31;&#x662F;&#x4E8C;&#x5206;&#x56FE;&#x7684;&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6;&#x95EE;&#x9898;&#x3002;</p>
+</blockquote>
+<p>&#x7531; K&#x151;nig &#x5B9A;&#x7406;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x77E5;&#x9053;&#x4E86;&#x8FD9;&#x4E2A; \(S\) &#x7684;&#x5927;&#x5C0F;&#x6070;&#x597D;&#x7B49;&#x4E8E;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x5E76;&#x4E14;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4E5F;&#x5728;&#x5B9A;&#x7406;&#x4E2D;&#x9610;&#x8FF0;&#x4E86;&#x3002;</p>
+<h2><span id="gou-zao-yu-zheng-ming">&#x6784;&#x9020;&#x4E0E;&#x8BC1;&#x660E;</span><a href="#gou-zao-yu-zheng-ming" class="header-anchor">#</a></h2><p>QwQ&#xFF0C;&#x6211;&#x8FD8;&#x662F;&#x597D;&#x597D;&#x5730;&#x7ED9;&#x51FA;&#x6784;&#x9020;&#x65B9;&#x6848;&#x548C;&#x8BC1;&#x660E;&#x5427;&#x3002;</p>
+<h3><span id="gou-zao">&#x6784;&#x9020;</span><a href="#gou-zao" class="header-anchor">#</a></h3><p>&#x5047;&#x8BBE;&#x5DF2;&#x7ECF;&#x7528;&#x5308;&#x7259;&#x5229;&#x7B97;&#x6CD5;&#x5F97;&#x5230;&#x4E86;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6848;&#xFF0C;&#x4ECE;&#x6BCF;&#x4E2A; \(L\) &#x4E2D;<strong>&#x672A;&#x5339;&#x914D;</strong>&#x7684;&#x70B9;&#x51FA;&#x53D1;&#xFF0C;&#x5728;&#x4E0D;&#x6E05;&#x7A7A;&#x65F6;&#x95F4;&#x6233;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x641C;&#x7D22;&#x589E;&#x5E7F;&#x8DEF;&#xFF0C;&#x5373;&#x8FDB;&#x884C; dfs&#x3002;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x5E94;&#x8BE5;&#x641C;&#x4E0D;&#x51FA;&#x6765;&#x65B0;&#x7684;&#x589E;&#x5E7F;&#x8DEF;&#x3002;&#x90A3;&#x4E48; \(L\) &#x4E2D;&#x6240;&#x6709;&#x7684;&#x672A;&#x88AB;&#x8BBF;&#x95EE;&#x5230;&#x3001;&#x4E14;&#x662F;&#x5339;&#x914D;&#x70B9;&#x7684;&#x70B9;&#x96C6; \(L&#x2019;\)&#xFF0C;&#x548C; \(R\) &#x4E2D;&#x6240;&#x6709;&#x88AB;&#x8BBF;&#x95EE;&#x5230;&#x7684;&#x3001;&#x4E14;&#x662F;&#x5339;&#x914D;&#x70B9;&#x7684;&#x70B9;&#x96C6; \(R&#x2019;\)&#xFF0C;&#x4E24;&#x8005;&#x7684;&#x5E76;&#x96C6;&#x5C31;&#x6784;&#x9020;&#x51FA;&#x4E86;&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6; \(S_0\)&#x3002;</p>
+<p>&#x7528;&#x7F51;&#x7EDC;&#x6D41;&#x7684;&#x8BF4;&#x6CD5;&#x5C31;&#x662F;&#xFF1A;&#x8BBE; \(E\) &#x4E2D;&#x7684;&#x8FB9;&#x6D41;&#x91CF;&#x4E3A; \(1\)&#xFF0C;&#x6E90;&#x70B9;&#x5411; \(L\) &#x7684;&#x6BCF;&#x4E2A;&#x70B9;&#x8FDE;&#x63A5;&#x6D41;&#x91CF;&#x4E3A; \(1\) &#x7684;&#x8FB9;&#xFF0C;\(R\) &#x7684;&#x6BCF;&#x4E2A;&#x70B9;&#x5411;&#x6C47;&#x70B9;&#x8FDE;&#x63A5;&#x6D41;&#x91CF;&#x4E3A; \(1\) &#x7684;&#x8FB9;&#x3002;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x6700;&#x5927;&#x6D41;&#x7684;&#x65B9;&#x6848;&#x540E;&#xFF0C;&#x5728;&#x6B8B;&#x4F59;&#x7F51;&#x7EDC;&#x4E2D;&#x4ECE;&#x6E90;&#x70B9;&#x51FA;&#x53D1;&#x8FDB;&#x884C;&#x67D3;&#x8272;&#x3002;&#x6240;&#x6709;&#x6E90;&#x70B9;&#x5230; \(L\) &#x7684;&#x8FB9;&#x8DD1;&#x6EE1;&#x5E76;&#x4E14;<strong>&#x672A;&#x88AB;&#x67D3;&#x5230;</strong>&#x7684;&#x70B9;&#x4EE5;&#x53CA;&#x6240;&#x6709; \(R\) &#x5230;&#x6C47;&#x70B9;&#x7684;&#x8FB9;&#x8DD1;&#x6EE1;&#x5E76;&#x4E14;<strong>&#x88AB;&#x67D3;&#x5230;</strong>&#x7684;&#x70B9;&#xFF0C;&#x6784;&#x6210;&#x7684;&#x96C6;&#x5408;&#x662F;&#x4E00;&#x4E2A;&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6; \(S_0\)&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x548C;&#x5308;&#x7259;&#x5229;&#x7684;&#x505A;&#x6CD5;&#x672C;&#x8D28;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+<h3><span id="zheng-ming">&#x8BC1;&#x660E;</span><a href="#zheng-ming" class="header-anchor">#</a></h3><h4><span id="text-zui-xiao-dian-fu-gai-ge-text-wan-mei-pi-pei">\(|\text{&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6;}| \ge |\text{&#x5B8C;&#x7F8E;&#x5339;&#x914D;}|\)</span><a href="#text-zui-xiao-dian-fu-gai-ge-text-wan-mei-pi-pei" class="header-anchor">#</a></h4><p>&#x7531;&#x4E8E;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x6784;&#x6210;&#x7684;&#x8FB9;&#x96C6;&#x90FD;&#x662F;&#x4E92;&#x4E0D;&#x76F8;&#x90BB;&#x7684;&#xFF0C;&#x5373;&#x90FD;&#x6CA1;&#x6709;&#x516C;&#x5171;&#x7684;&#x70B9;&#xFF0C;&#x800C;&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6;&#x53C8;&#x9700;&#x8981;&#x628A;&#x6240;&#x6709;&#x8FB9;&#x90FD;&#x8986;&#x76D6;&#x5230;&#xFF0C;&#x6240;&#x4EE5; \(S\) &#x7684;&#x5927;&#x5C0F;&#x81F3;&#x5C11;&#x8981;&#x5927;&#x4E8E;&#x6216;&#x7B49;&#x4E8E;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<h4><span id="s-0-text-wan-mei-pi-pei">\(|S_0| = |\text{&#x5B8C;&#x7F8E;&#x5339;&#x914D;}|\)</span><a href="#s-0-text-wan-mei-pi-pei" class="header-anchor">#</a></h4><p>&#x7531;&#x6211;&#x4EEC;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6848;&#x77E5;&#xFF0C;&#x8FD9;&#x7B49;&#x4EF7;&#x4E8E;&#x8BC1;&#x660E;&#x6BCF;&#x6761;<strong>&#x5339;&#x914D;&#x8FB9;</strong> \(e=(u,v)\) &#x7684;&#x4E24;&#x4E2A;&#x70B9;&#x67D3;&#x8272;&#x60C5;&#x51B5;&#x76F8;&#x540C;&#x3002;&#x5728;&#x6B8B;&#x4F59;&#x7F51;&#x7EDC;&#x4E2D;&#x641C;&#x5BFB;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x82E5; \(u \in L\) &#x88AB;&#x904D;&#x5386;&#x5230;&#xFF0C;&#x4F46;&#x7531;&#x4E8E; \(u\) &#x662F;&#x5339;&#x914D;&#x70B9;&#xFF0C;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x904D;&#x5386;&#x8FC7;&#x7A0B;&#x7684;&#x8D77;&#x59CB;&#x70B9;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x5FC5;&#x7136;&#x662F;&#x4ECE; \(v\) &#x90A3;&#x91CC;&#x987A;&#x7740;&#x53CD;&#x5411;&#x8FB9;&#x8FC7;&#x6765;&#x7684;&#xFF1B;&#x800C;&#x82E5; \(v \in R\) &#x88AB;&#x904D;&#x5386;&#x5230;&#xFF0C;&#x90A3;&#x7531;&#x4E8E;&#x8FD9;&#x6761;&#x8FB9;&#x662F;&#x6D41;&#x6EE1;&#x7684;&#xFF0C;&#x53CD;&#x5411;&#x8FB9;&#x8FD8;&#x6709;&#x6D41;&#x91CF;&#xFF0C;&#x90A3;&#x4E48; \(u\) &#x5FC5;&#x7136;&#x4E5F;&#x88AB;&#x904D;&#x5386;&#x5230;&#x3002;&#x6240;&#x4EE5;&#xFF0C;\(u\) &#x88AB;&#x67D3;&#x8272;&#xFF0C;&#x5F53;&#x4E14;&#x4EC5;&#x5F53; \(v\) &#x88AB;&#x67D3;&#x8272;&#xFF0C;&#x9006;&#x5426;&#x547D;&#x9898;&#x4E5F;&#x6210;&#x7ACB;&#x3002;</p>
+<p>&#x7EFC;&#x4E0A;&#xFF0C;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x4E2D;&#x7684;&#x6BCF;&#x6761;&#x8FB9;&#xFF0C;&#x4E24;&#x4E2A;&#x7AEF;&#x70B9; \(u,v\) &#x7684;&#x67D3;&#x8272;&#x60C5;&#x51B5;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;&#x800C;&#x6211;&#x4EEC;&#x7684;&#x6784;&#x9020;&#x8FC7;&#x7A0B;&#x4E5F;&#x662F;&#x4ECE;&#x5339;&#x914D;&#x8FB9;&#x7AEF;&#x70B9;&#x7684;&#x8BBF;&#x95EE;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x4E8C;&#x9009;&#x4E00;&#xFF0C;&#x6240;&#x4EE5; \(S_0\) &#x7684;&#x5927;&#x5C0F;&#x6070;&#x597D;&#x7B49;&#x4E8E;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<h4><span id="s-0-shi-yi-ge-dian-fu-gai">\(S_0\) &#x662F;&#x4E00;&#x4E2A;&#x70B9;&#x8986;&#x76D6;</span><a href="#s-0-shi-yi-ge-dian-fu-gai" class="header-anchor">#</a></h4><p>&#x5047;&#x8BBE;&#x6709;&#x6761;&#x8FB9; \(e=(u,v) \in E\), \(u \in L\), \(v \in R\)&#xFF0C;&#x672A;&#x88AB; \(S_0\) &#x4E2D;&#x7684;&#x70B9;&#x8986;&#x76D6;&#x3002;</p>
+<p>&#x5F15;&#x7406;&#x90E8;&#x5206;&#xFF1A;</p>
+<ol>
+<li>&#x7531;&#x4E8E; \(S_0\) &#x662F;&#x4ECE;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x4E2D;&#x6784;&#x9020;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5339;&#x914D;&#x8FB9;&#x80AF;&#x5B9A;&#x662F;&#x88AB;&#x8986;&#x76D6;&#x5230;&#x7684;&#xFF0C;&#x56E0;&#x6B64; \(e\) &#x662F;<strong>&#x975E;&#x5339;&#x914D;&#x8FB9;</strong>&#x3002;</li>
+<li>&#x800C;&#x82E5; \(e\) &#x662F;&#x975E;&#x5339;&#x914D;&#x8FB9;&#xFF0C;&#x90A3;&#x4E48;&#x4E24;&#x4E2A;&#x70B9;&#x5FC5;&#x7136;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x662F;&#x975E;&#x5339;&#x914D;&#x70B9;&#xFF0C;&#x5426;&#x5219;&#x8FD9;&#x6761;&#x8FB9;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x589E;&#x5E7F;&#xFF0C;&#x90A3;&#x4E48;&#x5148;&#x524D;&#x7684;&#x5339;&#x914D;&#x5C31;&#x4E0D;&#x662F;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x4E86;&#x3002;</li>
+<li>&#x7531;&#x4E8E; \(e\) &#x672A;&#x88AB;&#x8986;&#x76D6;&#xFF0C;&#x6240;&#x4EE5; \(u, v\) &#x5747;&#x4E0D;&#x5728;&#x6784;&#x9020;&#x7684; \(S_0\) &#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x4ECE; \(u, v\) &#x7684;&#x67D3;&#x8272;&#x60C5;&#x51B5;&#x5F97;&#x5230; \(u, v\) &#x662F;&#x5426;&#x662F;&#x5339;&#x914D;&#x70B9;&#x7684;&#x4FE1;&#x606F;&#x3002;</li>
+</ol>
+<p>&#x8BC1;&#x660E;&#x90E8;&#x5206;&#xFF1A;</p>
+<ol>
+<li>&#x5047;&#x8BBE; \(u, v\) &#x5747;&#x672A;&#x88AB;&#x67D3;&#x5230;&#xFF0C;&#x90A3;&#x4E48; \(u\) &#x80AF;&#x5B9A;&#x4E0D;&#x662F;&#x904D;&#x5386;&#x7684;&#x8D77;&#x70B9;&#xFF0C;&#x5373; \(u\) &#x662F;&#x5339;&#x914D;&#x70B9;&#xFF0C;&#x90A3;&#x4E48; \(u \in S_0\)&#xFF0C;&#x8FD9;&#x4E2A;&#x8FB9;&#x662F;&#x8986;&#x76D6;&#x5230;&#x7684;&#xFF0C;&#x77DB;&#x76FE;&#xFF1B;</li>
+<li>&#x5047;&#x8BBE; \(u, v\) &#x5747;&#x88AB;&#x67D3;&#x5230;&#xFF0C;&#x56E0;&#x4E3A; \(u, v\) &#x5747;&#x4E0D;&#x5728; \(S_0\) &#x4E2D;&#xFF0C;&#x6240;&#x4EE5; \(v\) &#x53EA;&#x80FD;&#x662F;&#x975E;&#x5339;&#x914D;&#x70B9;&#xFF0C;&#x7531;&#x4E8E;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x662F;&#x975E;&#x5339;&#x914D;&#x70B9;&#xFF0C;&#x6240;&#x4EE5; \(u\) &#x4E5F;&#x53EA;&#x80FD;&#x662F;&#x5339;&#x914D;&#x70B9;&#xFF0C;&#x90A3;&#x8FD9;&#x4E24;&#x4E2A;&#x70B9;&#x540C;&#x65F6;&#x88AB;&#x67D3;&#x5230;&#xFF0C;&#x4E0D;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x627E;&#x5230;&#x4E86;&#x4E00;&#x6761;&#x589E;&#x5E7F;&#x8DEF;&#x5417;&#xFF0C;&#x5339;&#x914D;&#x4E0D;&#x662F;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#xFF0C;&#x77DB;&#x76FE;&#xFF1B;</li>
+<li>&#x5047;&#x8BBE; \(u\) &#x672A;&#x88AB;&#x67D3;&#x5230;&#xFF0C;\(v\) &#x88AB;&#x67D3;&#x5230;&#xFF0C;&#x4F46; \(u, v\) &#x5747;&#x4E0D;&#x5728; \(S_0\) &#x4E2D;&#xFF0C;&#x90A3;&#x8FD9;&#x4E24;&#x4E2A;&#x70B9;&#x90FD;&#x4E0D;&#x80FD;&#x662F;&#x5339;&#x914D;&#x70B9;&#xFF0C;&#x4E0E;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x662F;&#x975E;&#x5339;&#x914D;&#x70B9;&#x77DB;&#x76FE;&#xFF1B;</li>
+<li>&#x5047;&#x8BBE; \(u\) &#x88AB;&#x67D3;&#x5230;&#xFF0C;\(v\) &#x672A;&#x88AB;&#x67D3;&#x5230;&#xFF0C;&#x4F46; \(e\) &#x662F;&#x975E;&#x5339;&#x914D;&#x8FB9;&#xFF0C;&#x5728;&#x6B8B;&#x4F59;&#x7F51;&#x7EDC;&#x4E2D;&#x662F;&#x6709;&#x6D41;&#x91CF;&#x7684;&#xFF0C;\(u\) &#x88AB;&#x67D3;&#x5230;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x80AF;&#x5B9A;&#x4F1A;&#x67D3;&#x5230; \(v\)&#xFF0C;&#x4E0E;&#x6784;&#x9020;&#x65B9;&#x5F0F;&#x77DB;&#x76FE;&#x3002;</li>
+</ol>
+<p>&#x7EFC;&#x4E0A;&#xFF0C;\(e=(u,v)\) &#x4E0D;&#x7BA1;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#xFF0C;&#x90FD;&#x4F1A;&#x6709;&#x77DB;&#x76FE;&#xFF0C;&#x6240;&#x4EE5;&#x7531;&#x53CD;&#x8BC1;&#x6CD5;&#xFF0C;\(e\) &#x4E0D;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#xFF0C;&#x56E0;&#x6B64;&#x6240;&#x6709;&#x8FB9;&#x90FD;&#x88AB;&#x8986;&#x76D6;&#x5230;&#x4E86;&#x3002;</p>
+<h4><span id="zheng-ming-zong-jie">&#x8BC1;&#x660E;&#x603B;&#x7ED3;</span><a href="#zheng-ming-zong-jie" class="header-anchor">#</a></h4><p>\(S_0\) &#x662F;&#x4E00;&#x4E2A;&#x5927;&#x5C0F;&#x7B49;&#x4E8E;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x7684;&#x70B9;&#x8986;&#x76D6;&#xFF0C;&#x800C;&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6;&#x7684;&#x5927;&#x5C0F;&#x662F;&#x5927;&#x4E8E;&#x6216;&#x7B49;&#x4E8E;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x7684;&#x5927;&#x5C0F;&#xFF1B;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x627E;&#x5230;&#x4E86; \(S_0\) &#x662F;&#x70B9;&#x8986;&#x76D6;&#x4E2D;&#xFF0C;&#x5927;&#x5C0F;&#x53D6;&#x5230;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x90A3;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5; \(S_0\) &#x662F;&#x4E00;&#x4E2A;&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6;&#x3002;</p>
+<p>&#x5B9E;&#x9645;&#xFF0C;&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x6784;&#x9020;&#x548C;&#x8BC1;&#x660E;&#xFF0C;&#x5F88;&#x5BB9;&#x6613;&#x53D1;&#x73B0;&#x82E5; \(u \in L\) &#x6CA1;&#x88AB;&#x67D3;&#xFF0C;&#x5B83;&#x80AF;&#x5B9A;&#x662F;&#x4E2A;&#x5339;&#x914D;&#x70B9;&#xFF0C;&#x82E5; \(v \in R\) &#x88AB;&#x67D3;&#xFF0C;&#x5982;&#x679C; \(v\) &#x662F;&#x4E2A;&#x975E;&#x5339;&#x914D;&#x70B9;&#x5C31;&#x627E;&#x5230;&#x589E;&#x5E7F;&#x8DEF;&#x4E86;&#xFF0C;&#x6240;&#x4EE5; \(v\) &#x4E5F;&#x80AF;&#x5B9A;&#x662F;&#x4E2A;&#x5339;&#x914D;&#x70B9;&#x3002;&#x6240;&#x4EE5;&#x6784;&#x9020;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x5224;&#x662F;&#x5426;&#x662F;&#x5339;&#x914D;&#x70B9;&#x3002;</p>
+<h2><span id="bi-sai-jie-guo-fen-xi">&#x6BD4;&#x8D5B;&#x7ED3;&#x679C;&#x5206;&#x6790;</span><a href="#bi-sai-jie-guo-fen-xi" class="header-anchor">#</a></h2><p>&#x5F53;&#x65F6;&#xFF0C;&#x51FA;&#x5230;&#x8FD9;&#x4E00;&#x9053;&#x7684;&#x65F6;&#x5019;&#x56FE;&#x8BBA;&#x9898;&#x8FD8;&#x4E0D;&#x662F;&#x5F88;&#x591A;&#x3002;&#x6240;&#x4EE5;&#x672C;&#x6765;&#x8FD9;&#x9053;&#x9898;&#xFF0C;&#x662F;&#x6309;&#x56FE;&#x8BBA;+&#x5B9A;&#x7406;&#x9898;+&#x4E2D;&#x524D;&#x671F;&#x51FA;&#x7684;&#xFF0C;&#x8FD0;&#x7528;&#x5230;&#x4E86;&#x5E38;&#x89C1;&#x7684;&#x4E8C;&#x5206;&#x56FE;&#x6A21;&#x578B;&#x2014;&#x2014;&#x7F51;&#x683C;&#x56FE;&#xFF0C;&#x4EE5;&#x53CA; K&#x151;nig&#x2019;s theorem&#x3002;&#x4F46;&#x662F;&#x542C;&#x8BF4; OnlineJudge &#x652F;&#x6301; SPJ&#xFF0C;&#x6240;&#x4EE5;&#x5199;&#x4E86;&#x4E00;&#x4E2A; SPJ &#x8BD5;&#x4E86;&#x8BD5;&#xFF0C;&#x7ED3;&#x679C;&#x6CA1;&#x60F3;&#x5230;&#x597D;&#x591A;&#x4EBA;&#x5361;&#x5728;&#x201C;&#x65B9;&#x6848;&#x201D;&#x8FD9;&#x4E00;&#x6B65;&#x4E86;&#x3002;&#x6700;&#x540E;&#x901A;&#x8FC7;&#x7387; 7/9&#xFF0C;&#x90FD;&#x662F;&#x524D;&#x6392;&#x9009;&#x624B;&#x5728;&#x540E;&#x671F;AC&#x7684;&#xFF08;&#x770B;&#x6765;&#x5361;&#x9898;&#x610F;&#x4E86;&#xFF09;&#x2026;&#x2026;&#x7565;&#x9057;&#x61BE;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x5B9A;&#x7406;&#x5E38;&#x7528;&#x5B83;&#x7684;&#x7ED3;&#x8BBA;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6700;&#x5C0F;&#x70B9;&#x8986;&#x76D6;&#x548C;&#x5B8C;&#x7F8E;&#x5339;&#x914D;&#x76F8;&#x7B49;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x5B9A;&#x7406;&#x4E2D;&#x662F;&#x6709;&#x9610;&#x8FF0;&#x51FA;&#x5982;&#x4F55;&#x4ECE;&#x5339;&#x914D;&#x6784;&#x9020;&#x51FA;&#x70B9;&#x8986;&#x76D6;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x5B9A;&#x7406;&#x7684;&#x5B66;&#x4E60;&#x4E5F;&#x5E94;&#x8BE5;&#x6DF1;&#x5165;&#x4E00;&#x4E9B;&#xFF08;&#x8BB2;&#x7ED9;&#x81EA;&#x5DF1;&#xFF09;&#x3002;</p>
+<h2><span id="biao-cheng">&#x6807;&#x7A0B;</span><a href="#biao-cheng" class="header-anchor">#</a></h2><p><a href="/assets/src/bcpc/2017/balloon-std.cpp">&#x5308;&#x7259;&#x5229;&#x7B97;&#x6CD5;</a><br><a href="/assets/src/bcpc/2017/balloon-isap.cpp">ISAP</a></p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/BCPC/">#BCPC</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/">#二分图</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Konig-%E5%AE%9A%E7%90%86/">#Kőnig 定理</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2017/12/18/bcpc-2017-I/">BCPC2017 决赛 I. 夜晚的街区</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2017/11/05/zkw-segment-tree/">zkw线段树</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">评论</h3>
+    <!-- https://github.com/gitalk/gitalk/ -->
+
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+	const gitalk = new Gitalk({
+		clientID: 'f14a9588509f70e5daf3',
+		clientSecret: 'b91f31763cfd5e1da04f45f23717b7564638c1fd',
+		owner: 'ChieloNewctle',
+		repo: 'chielonewctle.github.io',
+		admin: [
+		
+			'ChieloNewctle',
+		
+		],
+		id: '2017/12/17/bcpc-2017-pre-E/',
+		distractionFreeMode: false // Facebook-like distraction free mode
+	})
+
+	gitalk.render('gitalk-container')
+</script>
+
+
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Chielo Newctle&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="RSS" href="/atom.xml">
+                    
+                    RSS
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="Email" href="mailto:chielonewctle@yandex.com">
+                    
+                    Email
+                    
+                </a>
+                
+                    
+                <a class="column is-narrow has-text-black" title="Theme" href="https://github.com/ChieloNewctle/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    Theme
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.loli.net/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
